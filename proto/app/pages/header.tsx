@@ -2,6 +2,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons"
 import { useEffect, useState } from "react"
+import Image from 'next/image'
 
 export default function Header() {
     const [isMobile, setIsMobile] = useState(window.innerWidth < 720)
@@ -15,13 +16,14 @@ export default function Header() {
         window.addEventListener("resize", handleResize)
     })
 
-    const navBar = () => {        
+    const navBar = () => {     
+        let className = "ml-6"   
         return (
             <>
-                <a href="">Accueil</a>
-                <a href="zines">Zines</a>
-                <a>Zineurses</a>
-                <a>Contact</a>
+                <a className={className} href="/">Accueil</a>
+                <a className={className} href="zines">Zines</a>
+                <a className={className} href="team">Zineurses</a>
+                <a className={className} href="contact">Contact</a>
             </>
         )
     }
@@ -30,9 +32,9 @@ export default function Header() {
         <div className="w-full flex flex-col justify-center sticky top-0">
         
             <div className="p-6 m-2 border-2 border-black h-8 w-full flex self-center items-center justify-between shadow-xl bg-white">
-                <p>Logo Proto</p>
+                <Image src={"/logo.png"} alt="Logo Proto" width={100} height={100}/>
                {isMobile ? <FontAwesomeIcon icon={menuOpen ? faXmark : faBars} onClick={() => setMenuOpen(!menuOpen)}/>
-               : <div className="flex flex-row justify-between w-full p-2">
+               : <div className="flex flex-row w-full p-2 mr-10">
                     {navBar()}
                 </div>}
             </div>
