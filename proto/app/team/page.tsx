@@ -1,27 +1,20 @@
 import Image from "next/image"
 import Header from "../pages/header"
+import Team from "../../public/data/zineurs.json"
 
 export default function Page() {
-    const Team = {
-        antho: {
-            name: "Antho",
-            alias: "",
-            content: ""
-        },
-        nima: {
-            name: "Nima",
-            alias: "",
-            content: ""
-        }
-    }
+
+    console.log(Team);
+    
 
     const Card = (key: string, value: any) => {
         
         return(
         <div key={key}>
-            <Image src={`/avatars/${value.name}.png`} alt={`avatar ${value.name}`} width={100} height={100}/>
-            <p>{value.name}</p>
+            <Image src={`/data/avatars/${value.name}.png`} alt={`avatar ${value.name}`} width={300} height={300}/>
+            <p className="bold">{value.name}</p>
             <p>{value.content}</p>
+
         </div>
         )
     }
