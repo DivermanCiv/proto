@@ -1,20 +1,33 @@
+'use client'
+
 import Image from "next/image"
-import Header from "../pages/header"
 import Team from "../../public/data/zineurs.json"
+import { useState } from "react"
 
-export default function Page() {
 
-    console.log(Team);
-    
+export default function Page() {    
+
+    const [isMobile, setIsMobile] = useState(window.innerWidth < 720)
 
     const Card = (key: string, value: any) => {
         
         return(
-        <div key={key}>
-            <Image src={`/data/avatars/${value.name}.png`} alt={`avatar ${value.name}`} width={300} height={300}/>
-            <p className="bold">{value.name}</p>
-            <p>{value.content}</p>
+        <div key={key} className="my-12 flex flex-row">
+            <div>
+            {value.avatar && 
+                <Image src={`/data/avatars/${value.avatar}`} alt={`avatar ${value.name}`} 
+                    width={isMobile ? 100 : 300} height={isMobile ? 100 : 300}/>}
+            </div>
+            <div>
+                <p className="font-bold">{value.name}</p>
+                <p>{value.content}</p>  
+                {value.instagram && <a href={`https://www.instagram.com/${value.instagram}`}>
+                    <img src={`/icons/instagram.svg`} alt={'instagram'} height={50} width={50}/>
+                </a>}
+            </div>
 
+            
+            
         </div>
         )
     }
