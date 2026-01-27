@@ -4,7 +4,7 @@ import Image from "next/image"
 import Team from "../../public/data/zineurs.json"
 export default function Page() {    
     
-    const Card = (key: string, value: any) => {
+    const Card = (key: string, value: {name: string, avatar: string, alias: string, instagram: string, content: string}) => {
         
         return(
             <div>
@@ -13,7 +13,7 @@ export default function Page() {
                         {value.avatar && <Image className="max-w-[100] mb-2 md:ml-2 rounded-xl" src={`/data/avatars/${value.avatar}`} alt={`avatar ${value.name}`} 
                         width={300} height={300}/>}
                         {value.instagram && <a className="self-end md:self-start" href={`https://www.instagram.com/${value.instagram}`}>
-                        <img src={`/icons/instagram.svg`} alt={'instagram'} height={50} width={50}/>
+                        <Image src={`/icons/instagram.svg`} alt={'instagram'} height={50} width={50}/>
                         </a>}
                     </div>
                 

@@ -1,6 +1,5 @@
 'use client'
 
-import Header from "../pages/header"
 import Zines from "../../public/data/zines.json"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faX, faGlasses, faFileArrowDown } from "@fortawesome/free-solid-svg-icons"
@@ -18,7 +17,7 @@ export default function Page() {
         </div>)
     }
 
-    const Card = (key: string, value: any) => {
+    const Card = (key: string, value: {title: string, description: string, pdf: string, cover: string}) => {
         return(<div key={key} className="my-12 flex flex-col md:flex-row ">
             <h2 className="font-bold mb-4">{value.title}</h2>
             {value.description && <p>{value.description}</p>}
