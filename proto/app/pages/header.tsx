@@ -20,7 +20,6 @@ export default function Header() {
         let className = "ml-6"   
         return (
             <>
-                <a className={className} href="/">Accueil</a>
                 <a className={className} href="zines">Zines</a>
                 <a className={className} href="team">Zineurses</a>
                 <a className={className} href="contact">Contact</a>
@@ -32,7 +31,9 @@ export default function Header() {
         <div className="w-full flex flex-col justify-center sticky top-0">
         
             <div className="p-6 m-2 border-2 border-black h-8 w-full flex self-center items-center justify-between shadow-xl bg-white">
-                <Image src={"/logo.png"} alt="Logo Proto" width={100} height={100}/>
+                <a href="/">
+                    <Image src={"/logo.png"} className="max-w-auto" alt="Logo Proto" width={100} height={100}/>
+                </a>
                {isMobile ? <FontAwesomeIcon icon={menuOpen ? faXmark : faBars} onClick={() => setMenuOpen(!menuOpen)}/>
                : <div className="flex flex-row w-full p-2 mr-10">
                     {navBar()}
