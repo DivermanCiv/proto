@@ -13,28 +13,28 @@ export default function Page() {
     const PdfViewer = (pdf: string) => {
         return(<div className="flex flex-col w-full h-screen bg-red-500/150">
             <FontAwesomeIcon onClick={() => setOpenPdf('')} height={50} width={50} className="self-end cursor-pointer" icon={faX}/>
-            <embed className="w-full h-screen" src={`/data/zines/${pdf}.pdf`} type="application/pdf"/>
+            <embed className="w-full h-3/4" src={`/data/zines/${pdf}.pdf`} type="application/pdf"/>
         </div>)
     }
 
     const Card = (key: string, value: {title: string, description: string, pdf: string, cover: string}) => {
-        return(<div key={key} className="my-12 flex flex-col md:flex-row ">
+        return(<div key={key} className="flex flex-col">
             <h2 className="font-bold mb-4">{value.title}</h2>
             {value.description && <p>{value.description}</p>}
             {value.pdf && openPdf === key ? PdfViewer(value.pdf) :
                 <div>
-                    <div key={key} className={`my-12 flex flex-col md:flex-row `}>
+                    <div key={key} className={`my-4 flex flex-col md:flex-row `}>
                         <div className={`flex mr-4 mb-4 h-fit flex-row md:flex-col`}>
-                            {value.cover && <Image className="max-w-[100] rounded-xl" src={`/data/covers/${value.cover}`} alt={`cover ${value.title}`} 
+                            {value.cover && <Image className="max-w-[100] rounded-xl md:my-2" src={`/data/covers/${value.cover}`} alt={`cover ${value.title}`} 
                             width={300} height={300}/>}
                             {value.pdf && <div className="self-end md:self-start">
-                                <FontAwesomeIcon icon={faGlasses} onClick={() => setOpenPdf(key)} size="2x"/>
+                                <FontAwesomeIcon icon={faGlasses} onClick={() => setOpenPdf(key)} size="2x" className="cursor-pointer"/>
                                 <a href={`/data/zines/${value.pdf}.pdf`} download={`${value.title}`}><FontAwesomeIcon icon={faFileArrowDown} size="2x"/></a>
                             </div>}
                     </div>
                 </div>
             </div>}
-            <hr className="my-12 h-0.5 border-t-0 bg-neutral-100 dark:bg-white/10" /> 
+            <hr className="my-4 h-0.5 border-t-0 bg-neutral-100 dark:bg-white/10" /> 
         </div>)
     }
 

@@ -1,5 +1,6 @@
 export default function Page() {
     return <div>
-        <h1>My Page</h1>
+        <h1>Contact</h1>
+        {/* Formulaire de contact ? */}
         </div>
   }
